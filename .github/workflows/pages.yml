@@ -2,6 +2,7 @@ name: Publicar no GitHub Pages
 
 on:
   push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -15,8 +16,8 @@ concurrency:
 
 jobs:
   deploy:
-    # O GitHub Pages só aceita publicar a partir da branch padrão do repositório
-    if: github.ref_name == github.event.repository.default_branch
+    # O ambiente github-pages só aceita publicar a partir da main
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
